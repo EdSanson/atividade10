@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Alunos</title>
+</head>
+<body>
+    <h1>Cadastro de Alunos</h1>
+
+    <form action="/cadastrar" method="POST">
+        <label for="nome"> Nome do aluno</label> <br>
+        <input type="text" id="nome" name="nome" required> <br><br>
+         <label for="turma"> Turma</label> <br>
+        <input type="text" id="turma" name="turma" required> <br><br>
+         <label for="idade"> Idade</label> <br>
+        <input type="number" id="idade" name="idade" required> <br><br>
+         <label for="email"> Email</label> <br>
+        <input type="email" id="email" name="email" required> <br><br>
+        <input type="submit" value="Cadastrar Aluno"><br><br>
+        <a href="/listar">Listar alunos</a>
+
+    </form>
+</body>
+</html>
