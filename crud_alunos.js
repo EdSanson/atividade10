@@ -75,13 +75,13 @@ app.get("/listar", function(req, res){
                             <td>${row.turma}</td>
                             <td>${row.idade}</td>
                             <td>${row.email}</td>
-                            <td><a href="/deletar/${row.id}">Deletar</a></td>
-                            <td><a href="/atualizar-form/${row.id}">Alterar</a></td>
+                            <td><a href="/deletar/${row.id}">Excluir</a></td>
+                            <td><a href="/atualizar-form/${row.id}">Atualizar</a></td>
 
                             </tr>`).join('')}
                     </table>
                     <br><br>
-                         <a href="/">Cadastrar novo aluno</a>
+                         <a href="/">Menu Principal</a>
                     </body>
 
                 </html>`);
@@ -97,9 +97,8 @@ app.get("/deletar/:id", function(req,res){
     const deleteAluno = "DELETE FROM alunos WHERE id=?"
 
     connection.query(deleteAluno,[idDoAluno],function(err,rows) {
-        if(err){
+        if(!err){
           console.log("Aluno excluído com sucesso!");
-          res.send("Aluno excluído com sucesso!");
           res.redirect("/listar");
         }else{
             console.error("Erro ao excluir aluno",err);
@@ -121,7 +120,8 @@ app.post("/atualizar/:id", (req,res) => {
         function(err, result){
             if(!err){
                 console.log("Dados Atualizados com Sucesso!");
-                res.send("Dados Atualizados");
+                res.redirect("/listar");
+
             } else {
                 console.log("Erro ao atualizar ", err);
                 res.status(500).send("Erro ao atualizar!");
